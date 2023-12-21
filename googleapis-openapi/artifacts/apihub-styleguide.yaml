@@ -1,0 +1,189 @@
+apiVersion: apigeeregistry/v1
+kind: StyleGuide
+metadata:
+  name: apihub-styleguide
+data:
+  displayName: ""
+  mimeTypes:
+    - application/x.openapi+gzip;version=3
+    - application/x.openapi+gzip;version=2
+  guidelines:
+    - id: OpenAPI Specification
+      displayName: Govern properties of Info
+      description: ""
+      rules:
+        - id: OPENAPI_REF_CHECK
+          displayName: ""
+          description: |
+            Your API Definition/ Swagger must not contain local references of schema.
+          linter: asv
+          linterRulename: OPENAPI_REF_CHECK
+          severity: WARNING
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+      state: ACTIVE
+    - id: REST API Standards
+      displayName: Govern properties of Rest API Standards
+      description: ""
+      rules:
+        - id: HTTP_STATUS_CODES
+          displayName: ""
+          description: |
+            Must define required status code responses for paths.
+          linter: asv
+          linterRulename: HTTP_STATUS_CODES
+          severity: ERROR
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+        - id: HTTP_METHODS
+          displayName: ""
+          description: |
+            Must only use approved HTTP methods for each path in the specification.
+          linter: asv
+          linterRulename: HTTP_METHODS
+          severity: ERROR
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+        - id: SPECTRAL_RULE_CHECK
+          displayName: ""
+          description: |
+            The swagger must conform to spectral Linting Rules.
+          linter: asv
+          linterRulename: SPECTRAL_RULE_CHECK
+          severity: ERROR
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+        - id: NOUN_RULE_CHECK
+          displayName: ""
+          description: |
+            The base URLs must use nouns to label the resources at basePath.
+          linter: asv
+          linterRulename: NOUN_RULE_CHECK
+          severity: ERROR
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+        - id: MATCH_URL_STRUCTURE:STRUCTURE
+          displayName: ""
+          description: |
+            URLs must be properly structured at path Urls.
+          linter: asv
+          linterRulename: MATCH_URL_STRUCTURE:STRUCTURE
+          severity: WARNING
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+        - id: MATCH_URL_STRUCTURE:VERSION
+          displayName: ""
+          description: |
+            URLs must be properly versioned at path Urls.
+          linter: asv
+          linterRulename: MATCH_URL_STRUCTURE:VERSION
+          severity: ERROR
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+        - id: CUSTOM_HEADERS:IANA_HEADER
+          displayName: ""
+          description: |
+            Industry standard (IANA) header check. Headers must use correct format.
+          linter: asv
+          linterRulename: CUSTOM_HEADERS:IANA_HEADER
+          severity: ERROR
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+        - id: CUSTOM_HEADERS:ORG_HEADER
+          displayName: ""
+          description: |
+            Org approved custom header check. Headers must use correct format.
+          linter: asv
+          linterRulename: CUSTOM_HEADERS:ORG_HEADER
+          severity: ERROR
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+        - id: CUSTOM_HEADERS:CUS_HEADER
+          displayName: ""
+          description: |
+            Non approved custom header check. Headers must use correct format
+          linter: asv
+          linterRulename: CUSTOM_HEADERS:CUS_HEADER
+          severity: ERROR
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+        - id: CUSTOM_HEADERS:MANDATORY_HEADER
+          displayName: ""
+          description: |
+            Mandatory response header check. Headers must use correct format
+          linter: asv
+          linterRulename: CUSTOM_HEADERS:MANDATORY_HEADER
+          severity: ERROR
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+        - id: URL_VARIATIONS:PAGINATION
+          displayName: ""
+          description: |
+            Query parameters 'limit' and 'offset' should be used for pagination. Complex variations for API requests must be handled as part of query string.
+          linter: asv
+          linterRulename: URL_VARIATIONS:PAGINATION
+          severity: ERROR
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+      state: ACTIVE
+    - id: API Data Standards
+      displayName: Govern properties of Info
+      description: ""
+      rules:
+        - id: DATA_EXCHANGE_FORMAT
+          displayName: ""
+          description: |
+            Must only use approved data exchange formats for requests and responses.
+          linter: asv
+          linterRulename: DATA_EXCHANGE_FORMAT
+          severity: WARNING
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+        - id: DATA_FORMAT
+          displayName: ""
+          description: |
+            Data keys must be in camelCase format. The reference name needs to be in either 'camelCase' or 'PascalCase'.
+          linter: asv
+          linterRulename: DATA_FORMAT
+          severity: WARNING
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+      state: ACTIVE
+    - id: Common Data Structures
+      displayName: Govern properties of Common Data Structures
+      description: ""
+      rules:
+        - id: ERROR_STRUCTURE
+          displayName: ""
+          description: |
+            Must define error structure. Should have atleast one error structure for paths.
+          linter: asv
+          linterRulename: ERROR_STRUCTURE
+          severity: ERROR
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+        - id: WARNING_STRUCTURE
+          displayName: ""
+          description: |
+            Must define warning structure for paths. 
+          linter: asv
+          linterRulename: WARNING_STRUCTURE
+          severity: ERROR
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+        - id: UNLINKED_ERROR_RESPONSE
+          displayName: ""
+          description: |
+            Must not define un-used definitions, responses or parameters.
+          linter: asv
+          linterRulename: UNLINKED_ERROR_RESPONSE
+          severity: ERROR
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+    - id: Example Validation
+      displayName: Govern properties of Example Validation
+      description: ""
+      rules:
+        - id: REQUEST_EXAMPLE
+          displayName: ""
+          description: |
+            Must define an example in request object.
+          linter: asv
+          linterRulename: REQUEST_EXAMPLE
+          severity: ERROR
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+        - id: RESPONSE_EXAMPLE
+          displayName: ""
+          description: |
+            Must define an example in response object.
+          linter: asv
+          linterRulename: RESPONSE_EXAMPLE
+          severity: ERROR
+          docUri: https://meta.stoplight.io/docs/spectral/ZG9jOjExNw-open-api-rules#info-contact
+      state: ACTIVE
+  linters:
+    - name: asv
+      uri: https://github.com/stoplightio/spectral

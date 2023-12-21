@@ -1,0 +1,48 @@
+# Copyright 2021 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# This configuration file uses environment variables to configure the registry
+# server. Environment variable names are arbitrary and can be changed to any
+# user-preferred values. Environment variable references can also be replaced
+# with specific values. For example, "${PORT}" could be replaced with "8080"
+# to specify a specific port or changed to "${REGISTRY_PORT}" to refer to the
+# REGISTRY_PORT environment variable. Here we use PORT instead of REGISTRY_PORT
+# because PORT is the variable passed in by Google Cloud Run to configure hosted
+# services.
+
+# Port where the server will listen.
+# If unset or zero, an open port will be assigned.
+port: ${PORT}
+database:
+  # Driver for the database connection.
+  # Options: [ sqlite3, postgres, cloudsqlpostgres ]
+  driver: ${REGISTRY_DATABASE_DRIVER}
+  # Config for the database connection. The format is a data source name (DSN).
+  # PostgreSQL Reference: See "Connection Strings" at https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING
+  # SQLite Reference: See "URI filename examples" at https://www.sqlite.org/c3ref/open.html
+  config: ${REGISTRY_DATABASE_CONFIG}
+logging:
+  # Level of logging to print to standard output.
+  # Options: [ debug, info, warn, error, fatal ]
+  level: ${REGISTRY_LOGGING_LEVEL}
+  # Format of log entries.
+  # Options: [ json, text ]
+  format: ${REGISTRY_LOGGING_FORMAT}
+pubsub:
+  # Enable Pub/Sub for event notification publishing.
+  # Options: [ true, false ]
+  enable: ${REGISTRY_PUBSUB_ENABLE}
+  # Project ID of the Google Cloud project to use for Pub/Sub.
+  # Reference: https://cloud.google.com/resource-manager/docs/creating-managing-projects
+  project: ${REGISTRY_PUBSUB_PROJECT}
